@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="page-text my-5">Here are the dominant colors from your image</h1>
+        {% for img in img_list %}
+            <div class="d-flex flex-column justify-content-center my-3 text-center" id="k{{loop.index}}">
+                <p>
+                    <span>Hex: {{ hex_list[loop.index0] }}</span> |
+                    <span>RGB: {{ rgb_list[loop.index0] }}</span> 
+                </p>
+                {% if hex_list[loop.index0] == "#FFFFFF" %}
+                    <img class="np-img blue-border" src="{{ img }}" alt="">
+                {% else %}
+                <img class="np-img" src="{{ img }}" alt="">
+                {% endif %}         
+            </div>
+        {% endfor %}
+    <a href="{{ url_for('home') }}" class="button-link py-3 px-3">Back to home</a>
+
+{% endblock content %}
